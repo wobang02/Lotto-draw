@@ -1,0 +1,7 @@
+# 운영체제가 만드는 파일
+.DS_Store
+Thumbs.db
+desktop.ini
+# 학생 명단 같은 개인정보 파일은 올리지 않기
+*.csv
+*.xlsx

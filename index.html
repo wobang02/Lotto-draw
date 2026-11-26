@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>숫자 구슬 추첨</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <h1>숫자 구슬 추첨</h1>
+      <div class="top-actions">
+        <button type="button" class="pill-btn" id="soundBtn" aria-pressed="true">소리 켜짐</button>
+        <button type="button" class="pill-btn" id="fullBtn">전체화면</button>
+      </div>
+    </header>
+
+    <main class="stage">
+      <section class="machine-area" aria-label="추첨기">
+        <div class="machine" id="machine">
+          <canvas id="machineCanvas"></canvas>
+        </div>
+        <p class="status" id="status" aria-live="polite">설정을 확인하고 추첨 시작을 누르세요</p>
+      </section>
+
+      <section class="panel" aria-label="추첨 설정">
+        <div class="range-row">
+          <label class="field">
+            <span class="field-label">시작 숫자</span>
+            <input id="minInput" class="num-input" type="number" inputmode="numeric" min="0" max="999" step="1" value="1">
+          </label>
+          <span class="tilde" aria-hidden="true">~</span>
+          <label class="field">
+            <span class="field-label">끝 숫자</span>
+            <input id="maxInput" class="num-input" type="number" inputmode="numeric" min="0" max="999" step="1" value="28">
+          </label>
+        </div>
+
+        <div class="field">
+          <span class="field-label" id="countLabel">뽑을 개수</span>
+          <div class="stepper">
+            <button type="button" class="step-btn" id="countMinus" aria-label="한 개 줄이기">−</button>
+            <input id="countInput" class="num-input" type="number" inputmode="numeric" min="1" max="30" step="1" value="6" aria-labelledby="countLabel">
+            <button type="button" class="step-btn" id="countPlus" aria-label="한 개 늘리기">+</button>
+          </div>
+        </div>
+
+        <div class="option-row">
+          <div class="field">
+            <span class="field-label">뽑는 방식</span>
+            <div class="segmented" role="radiogroup" aria-label="뽑는 방식">
+              <button type="button" role="radio" data-mode="auto">자동</button>
+              <button type="button" role="radio" data-mode="one">한 개씩</button>
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">속도</span>
+            <div class="segmented" role="radiogroup" aria-label="속도">
+              <button type="button" role="radio" data-speed="normal">보통</button>
+              <button type="button" role="radio" data-speed="fast">빠르게</button>
+            </div>
+          </div>
+        </div>
+
+        <p class="message" id="message" role="alert"></p>
+
+        <div class="actions">
+          <button type="button" class="primary-btn" id="drawBtn">추첨 시작</button>
+          <button type="button" class="secondary-btn" id="resetBtn">다시 하기</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="results" aria-label="뽑힌 숫자">
+      <span class="results-label">뽑힌 숫자</span>
+      <ol class="slots" id="slots"></ol>
+    </footer>
+  </div>
+
+  <div class="dim" id="dim" aria-hidden="true"><p class="dim-caption" id="dimCaption"></p></div>
+  <div class="reveal" id="reveal" aria-hidden="true"></div>
+  <canvas class="confetti" id="confetti" aria-hidden="true"></canvas>
+
+  <script src="./script.js"></script>
+</body>
+</html>
